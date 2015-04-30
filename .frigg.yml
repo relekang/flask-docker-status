@@ -1,0 +1,11 @@
+tasks:
+  - tox -e py34
+  - tox -e flake8
+  - coverage report && coverage xml
+
+services:
+  - docker
+
+coverage:
+  path: coverage.xml
+  parser: python

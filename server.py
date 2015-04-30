@@ -7,6 +7,7 @@ app = Flask(__name__)
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 app.debug = True
 
+
 @app.route("/")
 @cache.cached(timeout=30)
 def index():
@@ -19,8 +20,6 @@ def index():
     )
     (stdout, stderr) = process.communicate()
     out = stdout.decode('utf-8').strip() if stdout else ''
-    err = stderr.decode('utf-8').strip() if stderr else ''
-    return_code = process.returncode
 
     return render_template('index.html', ps_output=out)
 
